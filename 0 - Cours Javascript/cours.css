@@ -1,0 +1,21 @@
+body {
+  background-color: #111;
+  color: #eee;
+  font-family: "Roboto Slab", serif;
+}
+
+.series-frame {
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  border: 2px solid #eee;
+  margin: 30px;
+  padding: 10px;
+}
+
+#info {
+  color: lightblue;
+  font-size: 1.12rem;
+}
