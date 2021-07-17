@@ -56,7 +56,7 @@ let firstBook = new Book('Dark Beginnings', 'Will Alexander', 135);
 let secondBook = new Book('Tasavesh', 'Martine Aubry', 245);
 let thirdBook = new Book('Voyage de Chihiro', 'Marlene Chiappa', 352);
 let fourthBook = new Book('Terminator', 'Bob', 35);
-let fiveBook = new Book('Terminator', 'Bob', 35);
+let fiveBook = new Book('Terminator 2', 'Bob', 35);
   
 //  Le tableau // Array // (selectione des objects créé et en fait une liste)
 let Books = [firstBook, secondBook, thirdBook, fourthBook];
@@ -364,5 +364,122 @@ if (dataExists && dataIsValid) {
 
 
 
+// Chapitre 5 - Les Fonctions = effectuer un bloc de code
+
+// On définit la fonction
+function afficherDeuxValeurs(valeur1, valeur2) {
+          console.log('Première valeur:' + valeur1);
+          console.log('Deuxième valeur:' + valeur2);
+    // console.log = demander à la console d'afficher le message
+    }
+    
+// On utilise la fonction
+afficherDeuxValeurs(12, 'Bonjour');
+    
+// On obtient dans la console
+    // > Première valeur:12 
+    // > Deuxième valeur:Bonjour 
 
 
+// Exemple calculer la moyenne d'un tableau 
+const calculateAverageRating = (Notes) => {
+
+    // Si longueur tableau = 0 --> pas de note existante
+    if(Notes.length === 0) {
+      return 0; 
+    }
+    
+    // initialisation sommes des notes
+    let SommeDesNotes = 0;
+
+    // Parcourir tableau ciblé par Notes
+    for (let Note of Notes) { 
+      SommeDesNotes += Note; // SommeDesNotes récupère chaque valeur une par une
+    }
+
+    // Calcul final de la moyenne
+    return SommeDesNotes / Notes.length;
+    }
+
+
+
+// Chapitre 6 - Les Classes et les méthodes d'instances
+class BankAccount {
+    constructor(owner, balance) {
+    this.owner = owner;
+    this.balance = balance;
+    }
+// permet d'afficher la balance
+    showBalance() {
+          console.log("Solde: " + this.balance + " EUR");
+    }
+
+// permet de modifier la quantité de la balance
+    deposit(amount) {
+          console.log("Dépôt de " + amount + " EUR");
+// this fais référence à instance crée de la classe BankAccount ("newAccout" quand je l'utilise)
+    this.balance += amount;
+    this.showBalance();
+    }
+    
+// permet de retirer de la balance
+    withdraw(amount) {
+    if (amount > this.balance) {
+             console.log("Vous ne possédez pas une telle somme !");
+    } else {
+             console.log("Retrait de " + amount + " EUR");
+    this.balance -= amount;
+    this.showBalance();
+    }
+    }
+    }
+
+ const newAccount = new BankAccount("Samuel Prigent", 500);
+
+// utilisation de cette classe
+newAccount.showBalance(); // imprime console "Solde: 500 EUR" à la console
+deposit(500); // depose 500 / imprime console "Dépôt de 500 EUR" + "Solde: 1000 EUR" 
+withdraw(500); // retire 500 / imprime console "Retrait de 500 EUR" + "Solde: 500 EUR"
+
+
+
+
+// Exemple de // Methode d'instance // recalcul note moyenne après ajout note
+
+class Show {
+    constructor(title, numberOfSeasons) {
+      this.title = title;
+      this.numberOfSeasons = numberOfSeasons;
+      this.ratings = [];
+      this.averageRating = 0;
+      this.totalRating = 0;
+    }
+  
+  addRating(rating) {
+  this.ratings.push(rating);
+  this.totalRating += rating;
+  this.averageRating = this.totalRating / this.ratings.length;
+  }
+}
+
+  // ou autre façon de l'écrire
+  /*
+
+  addRating(rating) {
+        this.ratings.push(rating);
+        let totalRating = 0;
+        for (let rating of this.ratings) {
+            totalRating += rating;
+        }
+        this.averageRating = totalRating / this.ratings.length;
+    }
+
+    */
+  
+// Exemple de // Methode Statique // 
+
+
+
+
+
+  
