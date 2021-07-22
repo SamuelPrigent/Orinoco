@@ -476,10 +476,96 @@ class Show {
 
     */
   
-// Exemple de // Methode Statique // 
+// Exemple de // Methode Statique // propre à la classe et non à l'instance
+
+// 1er exemple : nombre / Math
+const randomNumber = Math.random(); // nombre aléatoire entre [0, 1]
+const roundMeDown = Math.floor(495.966); // arrondit vers le bas = 495
+
+// 2eme exemple : // pas de constructor car on ne créé pas d'instance de la classe 
+
+class BePolite {
+        // 1
+    static sayHello() {
+          console.log("Hello!");
+    }
+    // 2
+    static sayHelloTo(name) {
+          console.log("Hello " + name + "!");
+    }
+    // 3
+    static add(firstNumber, secondNumber) {
+    return firstNumber + secondNumber;
+    }
+    }
+    
+    // nos actions
+    // 1
+    BePolite.sayHello(); // imprime "Hello!""
+    // 2
+    BePolite.sayHelloTo("Will"); // imprime "Hello Will!""
+    // 3
+    const sum = BePolite.add(2, 3); // sum = 5
 
 
+// Chapitre - Simplifier du code en evitant la répétitions 
 
+// Avant 
+const tauTitleText = tau.title;
+const tauSeasonsText = tau.numberOfSeasons + ' seasons';
+const tauEpisodesText = tau.episodesPerSeason + ' episodes per season';
+const tauComponent = {
+  titleText: tauTitleText,
+  seasonsText: tauSeasonsText,
+  episodesText: tauEpisodesText
+};
 
+// Ecriture du même code une deuxième fois pour un autre bloc 
+const meldrumTitleText = meldrum.title;
+const meldrumSeasonsText = meldrum.numberOfSeasons + ' seasons';
+const meldrumEpisodesText = meldrum.episodesPerSeason + ' episodes per season';
+const meldrumComponent = {
+  titleText: meldrumTitleText,
+  seasonsText: meldrumSeasonsText,
+  episodesText: meldrumEpisodesText
+};
 
+// Après 
+const generateComponent = (show) => {
+    const titleText = show.title;
+    const seasonsText = show.numberOfSeasons + ' seasons';
+    const episodesText = show.episodesPerSeason + ' episodes per season';
+    return {
+    titleText,
+    seasonsText,
+    episodesText,
+    };
+  }
   
+  const tauComponent = generateComponent(tau);
+  const meldrumComponent = generateComponent(meldrum);
+
+
+  // Chapitre - Fonction récurvise = S'appelle elle même à se répéter pour savoir quoi faire 
+  const binarySearch = (array, thingToFind, start, end) => {
+    if (start > end) {
+    return false;
+    }
+    
+       let mid = Math.floor((start + end) / 2);
+    if (array[mid] === thingToFind) {
+    return true;
+    }
+    
+    if (thingToFind < array[mid]) {
+    return binarySearch(array, thingToFind, start, mid - 1);
+    
+    } else {
+    
+    return binarySearch(array, thingToFind, mid + 1, end);
+    }
+    }
+
+//
+
+

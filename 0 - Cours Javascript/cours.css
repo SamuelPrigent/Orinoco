@@ -1,6 +1,6 @@
 body {
-  background-color: #111;
-  color: #eee;
+  background-color: white;
+  color: black;
   font-family: "Roboto Slab", serif;
 }
 
@@ -16,6 +16,6 @@ body {
 }
 
 #info {
-  color: lightblue;
+  color: darkblue;
   font-size: 1.12rem;
 }
