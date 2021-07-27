@@ -1,4 +1,4 @@
-# Transform Sass -> CSS
+# Sass > CSS
 
-In main folder :
+Run in terminal :
 sass --watch frontend/style/sass/style.scss frontend/style/css/style.css
