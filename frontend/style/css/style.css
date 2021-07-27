@@ -1,3 +1,10 @@
+body {
+  background-color: white;
+}
 
+.classtest {
+  font-size: 12px;
+  color: #9356dc;
+}
 
 /*# sourceMappingURL=style.css.map */

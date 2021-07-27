@@ -1,0 +1,12 @@
+// Orinoco Style
+
+// Config
+@import "config/color";
+
+// Components
+@import "components/general";
+
+.classtest {
+  font-size: 12px;
+  color: $primaire;
+}
