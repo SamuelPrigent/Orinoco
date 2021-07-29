@@ -9,9 +9,13 @@
     <!-- Switch de version : Desktop / Mobile -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device=width, initial-scale=1.0">
+        <!-- Font Finger Paint / Titre -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">   
     <!-- Font Roboto -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">    
     <!-- Link Icon fontawesome -->
     <script src="https://kit.fontawesome.com/50164e3743.js" crossorigin="anonymous"></script>
     <!-- Liens pour reset le CSS -->
@@ -30,6 +34,7 @@
 <header>
 <div class="header">
     <div class="header-bloc">
+        <div class="header-icon"><i class="fas fa-shopping-cart"></i></div>
         <div class="header-title">Orinoco</div>
     </div>
 </div>
@@ -42,13 +47,13 @@
 
 <div class="conteneur-product">
 
-<div class="product-bloc">
+<div class="product-bloc-grey">
 
     <h2 class="product-category">Peluches</h2>
 
     <div class="product-bloc-grid">
 
-        <div class="product-card">
+        <a class="product-card" href="produit-1.html">
             <div class="product-card-paddingratio">
                     <img alt="camera" src="../backend/images/teddy_1.jpg"/>
             </div>
@@ -57,8 +62,11 @@
                     <div class="product-card-text-main-name">Norbert</div>
                     <div class="product-card-text-main-price">29€</div>
                 </div>
+                <div class="product-text-desc">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </div>
             </div>
-        </div>
+        </a>
 
         <div class="product-card">
             <div class="product-card-paddingratio">
@@ -68,6 +76,9 @@
                 <div class="product-card-text-main">
                     <div class="product-card-text-main-name">Arnold</div>
                     <div class="product-card-text-main-price">39€</div>
+                </div>
+                <div class="product-text-desc">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </div>
             </div>
         </div>
@@ -81,6 +92,9 @@
                     <div class="product-card-text-main-name">Lenny and Carl</div>
                     <div class="product-card-text-main-price">59€</div>
                 </div>
+                <div class="product-text-desc">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </div>
             </div>
         </div>
 
@@ -92,6 +106,9 @@
                 <div class="product-card-text-main">
                     <div class="product-card-text-main-name">Gustav</div>
                     <div class="product-card-text-main-price">45€</div>
+                </div>
+                <div class="product-text-desc">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </div>
             </div>
         </div>
@@ -105,12 +122,15 @@
                     <div class="product-card-text-main-name">Garfunkel</div>
                     <div class="product-card-text-main-price">55€</div>
                 </div>
+                <div class="product-text-desc">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </div>
             </div>
         </div>
 
 
     </div> <!-- fin bloc grid -->
-</div> <!-- fin bloc -->
+</div> <!-- fin bloc grey -->
 
 
 </div>

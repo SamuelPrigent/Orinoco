@@ -1,12 +1,24 @@
 .header-bloc {
   display: flex;
   width: 100%;
+  max-width: 1350px;
+  margin: auto;
   padding-left: 15px;
   align-items: center;
+  justify-content: left;
+  gap: 15px;
   border: 0px solid blue;
 }
 
 .header-title {
-  font-size: 2.5em;
-  color: #9800f0;
+  font-size: 2.3em;
+  color: black;
+  font-family: "Finger Paint", "Arial";
+}
+
+.header-icon {
+  font-size: 1.75em;
+  color: #ff9900;
+  position: relative;
+  top: 1px;
 }

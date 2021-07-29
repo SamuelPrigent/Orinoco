@@ -146,6 +146,15 @@ button:active {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Reset link color bellow */
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
 /*
 input {
   border: 1px solid grey;
