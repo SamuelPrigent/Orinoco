@@ -56,7 +56,7 @@ body {
   width: 100%;
   height: auto;
   background-color: #eeeeec;
-  padding: 50px 0px 40px;
+  padding: 45px 0px 30px;
 }
 
 .header-bloc-spacebetween {
@@ -255,7 +255,7 @@ body {
     border: 0px solid blue;
   }
 }
-@media screen and (min-width: 950px) {
+@media screen and (min-width: 1000px) {
   .product-bloc-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -373,7 +373,7 @@ body {
   background-color: #6d2d00;
 }
 .product-page-bloc .brown {
-  background-color: #b65c21;
+  background-color: #b36735;
 }
 .product-page-bloc .black {
   background-color: black;
@@ -391,10 +391,10 @@ body {
   background-color: #ffd89d;
 }
 .product-page-bloc .blue {
-  background-color: #95b1ff;
+  background-color: #acc2ff;
 }
 .product-page-bloc .pink {
-  background-color: #ffa1e0;
+  background-color: #ffb3e6;
 }
 .product-page-bloc .product-page-bloc-right-add {
   width: 100%;
@@ -442,7 +442,7 @@ body {
   max-width: 1350px;
   margin: auto;
   border: 0px solid black;
-  padding-left: 30px;
+  padding-left: 35px;
 }
 
 .footer-bloc-card {
@@ -457,7 +457,7 @@ body {
 
 .footer-title {
   color: #000000;
-  font-size: 1em;
+  font-size: 0.95em;
   font-weight: 500;
   text-align: left;
   margin-bottom: 10px;
@@ -466,7 +466,7 @@ body {
 
 .footer-text {
   color: #000000;
-  font-size: 0.9em;
+  font-size: 0.86em;
   line-height: 174%;
   font-weight: 300;
   text-align: left;
