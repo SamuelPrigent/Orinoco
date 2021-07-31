@@ -23,7 +23,7 @@
     <!-- Liens style CSS personnel -->
     <link rel="stylesheet" href="style/css/style.css" />  
     <!-- Nom de l'onglet du site -->
-    <title>Norbert</title>  
+    <title>Panier</title>  
 </head>
 
 <!-- Body FULL PAGE -->
@@ -45,7 +45,7 @@
                 <div><i class="fas fa-search icon-search display-search"></i></div>
                 <input type="search" placeholder="Rechercher" class="espacesaisie display-search"/> 
                 <div class="header-shop">
-                    <a href="panier.html"><i class="fas fa-shopping-bag"></i></a>
+                    <a href="#rechercheproduits"><i class="fas fa-shopping-bag"></i></a>
                 </div>
             </div>
     
@@ -54,7 +54,7 @@
     </div>
     
     <div class="header-under"></div>
-    </header>      
+    </header> 
 <!-- Fin Header -->
 
 <!-- Début MAIN-->
@@ -62,57 +62,58 @@
 
 <div class="conteneur-product">
 
-<div class="product-bloc-grey2">
+<div class="panier-bloc-grey">
 
+<div class="panier-bloc">
 
-<div class="product-page-bloc">
+    <div class="panier-bloc-left">
 
-    <div class="product-page-bloc-left">
+                <div class="back-icon2">
+                    <a href="index.html">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
 
-            <div class="page-card-paddingratio">
-                    <img alt="camera" src="../backend/images/teddy_2.jpg"/>
-                    <div class="back-icon">
-                        <a href="index.html">
-                            <i class="fas fa-arrow-left"></i>
-                        </a>
-                    </div>
-            </div>
+        <div class="panier-bloc-right-head">
+            <h2 class="panier-bloc-right-title">Panier</h2>
+        </div>
 
 
     </div>
 
-    <div class="product-page-bloc-right">
+    <div class="panier-bloc-right">
 
-        <div class="product-page-bloc-right-head">
-            <h2 class="product-page-bloc-right-title">Arnold</h2>
-            <div class="product-page-bloc-right-price">39,00€</div>
+        <div class="panier-bloc-right-head">
+            <h2 class="panier-bloc-right-title">Récapitulatif</h2>
         </div>
 
-        <div class="product-page-bloc-right-desc">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <div class="panier-bloc-right-desc-flex">
+            <div class="panier-bloc-right-desc">Sous-Total : </div>
+            <div class="panier-bloc-right-desc">39,00€</div>
         </div>
-        <div class="product-page-bloc-right-separator"></div>
-        <div class="product-page-bloc-right-color">Couleur</div>
-
-        <div class="product-page-bloc-right-colors">
-            <button class="product-page-bloc-right-color-circle tan"></button>
-            <button class="product-page-bloc-right-color-circle palebrown"></button>
-            <button class="product-page-bloc-right-color-circle darkbrown"></button>
+        <div class="panier-bloc-right-desc-flex">
+            <div class="panier-bloc-right-desc">Frais de livraisons : </div>
+            <div class="panier-bloc-right-desc">4,99€</div>
         </div>
 
-        <button class="product-page-bloc-right-add">Ajouter au panier</button>
+        <div class="panier-bloc-right-separator2"></div>
+
+        <div class="panier-bloc-right-flex">
+            <div class="panier-bloc-right-color">Total</div>
+            <div class="panier-bloc-right-price">43,99€</div>
+        </div>
+
+        <button class="panier-bloc-right-add">Paiement</button>
 
 
 
     </div>
 
-</div>
+</div> <!-- fin product page bloc -->
 
 
 </div> <!-- fin bloc grey -->
-
-
-</div>
+</div> <!-- fin conteneur -->
 
 
 </main> <!-- Fin MAIN-->
@@ -121,6 +122,7 @@
 <footer>
 
     <div class="footer">
+        
             <div class="footer-bloc">
 
                 <nav class="footer-bloc-card">
@@ -140,9 +142,10 @@
     
     </div>
     
-    </footer>
+</footer>
 
 <!-- Fin Footer -->
+
 
 
 
