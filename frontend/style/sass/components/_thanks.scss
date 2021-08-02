@@ -1,8 +1,24 @@
 // Thanks style
 
 .thanks-icon {
-  font-size: 3em;
-  color: rgb(0, 148, 74);
+  font-size: 2.8em;
+  color: #00944a;
+  // animation: rotation 800ms;
+  // animation-fill-mode: both;
+  // animation-delay: 250ms;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotateZ(120deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+    animation-timing-function: ease;
+    opacity: 1;
+  }
 }
 
 .thanks-title {
