@@ -670,6 +670,7 @@ body {
   border: 1px solid black;
   color: black;
   margin: auto;
+  font-size: 0.9em;
 }
 
 .thanks-desc {
