@@ -8,17 +8,23 @@ const fetchTeddy = async () => {
   }
   return response.json(); 
 };
+
+// On va effectuer plusieurs fois la même tâche alors on créé une fonction
+// indication de la classe // remplacement du texte
+
+// NEW FONCTION - Simplifier l'écriture du code
 const replaceTextInElement = (selector, text) => {
-  const title = document.querySelector(selector);
-  title.innerText = text;
+  const content = document.querySelector(selector);
+  content.innerText = text;
 };
+
 const main = async () => {
   const teddy = await fetchTeddy();
   replaceTextInElement('.product-page-bloc-right-title', teddy.name);
   replaceTextInElement('.product-page-bloc-right-price', teddy.price);
   replaceTextInElement('.product-page-bloc-right-desc', teddy.description);
 
-  const img = document.querySelector('.page-card-paddingratio img');
+  const img = document.querySelector('.page-card-paddingratio');
   img.src = teddy.imageUrl;
 };
 
