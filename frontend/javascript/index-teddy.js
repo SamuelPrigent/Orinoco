@@ -38,7 +38,7 @@ const formatter = new Intl.NumberFormat('fr-FR', {
 
  // FONCTION 2 - Recup tableau a partir de fetch
 const fetchTeddies = async () => {
-  const response = await fetch('http://localhost:3000/api/cameras');
+  const response = await fetch('http://localhost:3000/api/teddies');
   if (!response.ok) {
     throw new Error('Il y a eu une erreur');
   }
@@ -100,7 +100,7 @@ const createTeddyCard = (teddy) => {
 };
 
 // FONCTION 4 - Utilise : fetchTeddies & createTeddyCard que l'on a créé
-const main = async () => {
+const autoAddCard = async () => {
   const teddies = await fetchTeddies(); // Utilise fonction créé : pour avoir tableaux
   for (const teddy of teddies) { 
     const teddyCard = createTeddyCard(teddy); // Utilise fonction créé : pour créer la card
@@ -109,7 +109,9 @@ const main = async () => {
 };
 
 // Exécution fonction main
-main();
+autoAddCard();
+
+
 
 
 
