@@ -1,11 +1,5 @@
-// Déclaration fonction formatage de prix json
-const formatter = new Intl.NumberFormat('fr-FR', {
-  style: 'currency',
-  currency: 'EUR',
-  minimumFractionDigits: 2,
-});
 
-// Documente le tooltip des commandes
+// Documentation tooltip des objets
 /**
  * @typedef {Object} Teddy
  * @property {Array<string>} colors - Les couleurs du teddy
@@ -17,11 +11,32 @@ const formatter = new Intl.NumberFormat('fr-FR', {
  */
 
 /**
- *
  * @returns {Promise<Array<Teddy>>} Teddies
  */
 
- // Retourne un tableau de teddies 
+/**
+ *
+ * @param {Teddy} teddy
+ * @returns {HTMLAnchorElement} TeddyCard
+ */
+// -------------------------------
+
+
+// FONCTIONS :
+// 1 - Formatter prix 
+// 2 - Fetch récupération tableau
+// 3 - Création de Card
+// 4 - Fonction main utilise fonctions 1 - 2 - 3 pour créer card et l'injecter dans le html
+
+
+// FONCTION 1 - formatage de prix json
+const formatter = new Intl.NumberFormat('fr-FR', {
+  style: 'currency',
+  currency: 'EUR',
+  minimumFractionDigits: 2,
+});
+
+ // FONCTION 2 - Recup tableau a partir de fetch
 const fetchTeddies = async () => {
   const response = await fetch('http://localhost:3000/api/teddies');
   if (!response.ok) {
@@ -30,19 +45,11 @@ const fetchTeddies = async () => {
   return response.json();
 };
 
-/**
- *
- * @param {Teddy} teddy
- * @returns {HTMLAnchorElement} TeddyCard
- */
-
-
-
-// Création variable pour le lieux ou l'on envera nos card qui est une classe
+// Attribution nom variable à un bloc / endroit du html
 const productBloc = document.querySelector('.product-bloc-grid');
 
 
-// Creation du html de la card teddy
+// FONCTION 3 - Creation card html de teddy
 const createTeddyCard = (teddy) => {
 
   // Création d'un élément de type liens "a"
@@ -80,7 +87,7 @@ const createTeddyCard = (teddy) => {
   const price = document.createElement('div');
   price.classList.add('product-card-text-main-price');
   main.appendChild(price);
-  price.innerText = formatter.format(teddy.price / 100); // Utilisation fonction pour formatter le prix
+  price.innerText = formatter.format(teddy.price / 1000); // Utilisation fonction créé de formatage de prix
 
   // Création d'une "div" description
   const description = document.createElement('div');
@@ -92,15 +99,17 @@ const createTeddyCard = (teddy) => {
   return a;
 };
 
-// Fonction qui utilise back end déjà fait
+// FONCTION 4 - Utilise : fetchTeddies & createTeddyCard que l'on a créé
 const main = async () => {
-  const teddies = await fetchTeddies(); // Utilise fetch pour avoir le tableaux
-  for (const teddy of teddies) { // Executera la fonction de création pour le nombre d'objet teddy du tableau
-    const teddyCard = createTeddyCard(teddy); // création card
-    productBloc.appendChild(teddyCard); // ajout dans le bloc
+  const teddies = await fetchTeddies(); // Utilise fonction créé : pour avoir tableaux
+  for (const teddy of teddies) { 
+    const teddyCard = createTeddyCard(teddy); // Utilise fonction créé : pour créer la card
+    productBloc.appendChild(teddyCard); // Ajout de la card dans le bloc
   }
 };
 
-// Exécution de la fonction main
+// Exécution fonction main
 main();
+
+
 
