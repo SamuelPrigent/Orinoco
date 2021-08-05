@@ -46,7 +46,7 @@ const fetchTeddies = async () => {
 };
 
 // Attribution nom variable à un bloc / endroit du html
-const productBloc = document.querySelector('.product-bloc-grid');
+const productBloc = document.querySelector('#product-bloc');
 
 
 // FONCTION 3 - Creation card html de teddy
@@ -87,7 +87,7 @@ const createTeddyCard = (teddy) => {
   const price = document.createElement('div');
   price.classList.add('product-card-text-main-price');
   main.appendChild(price);
-  price.innerText = formatter.format(teddy.price / 1000); // Utilisation fonction créé de formatage de prix
+  price.innerText = formatter.format(teddy.price / 100); // Utilisation fonction créé de formatage de prix
 
   // Création d'une "div" description
   const description = document.createElement('div');
