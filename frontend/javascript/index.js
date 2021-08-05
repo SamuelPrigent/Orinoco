@@ -1,13 +1,11 @@
-const productBloc = document.querySelector('.product-bloc-grid');
-
-// permet de formatter le prix eur de base json en format avec une virgule
+// Déclaration fonction formatage de prix json
 const formatter = new Intl.NumberFormat('fr-FR', {
   style: 'currency',
   currency: 'EUR',
   minimumFractionDigits: 2,
 });
 
-// permet de documenter le tooltip des commandes
+// Documente le tooltip des commandes
 /**
  * @typedef {Object} Teddy
  * @property {Array<string>} colors - Les couleurs du teddy
@@ -19,9 +17,11 @@ const formatter = new Intl.NumberFormat('fr-FR', {
  */
 
 /**
- * Retourne un tableau de teddies ??
+ *
  * @returns {Promise<Array<Teddy>>} Teddies
  */
+
+ // Retourne un tableau de teddies 
 const fetchTeddies = async () => {
   const response = await fetch('http://localhost:3000/api/teddies');
   if (!response.ok) {
@@ -35,6 +35,12 @@ const fetchTeddies = async () => {
  * @param {Teddy} teddy
  * @returns {HTMLAnchorElement} TeddyCard
  */
+
+
+
+// Création variable pour le lieux ou l'on envera nos card qui est une classe
+const productBloc = document.querySelector('.product-bloc-grid');
+
 
 // Creation du html de la card teddy
 const createTeddyCard = (teddy) => {
@@ -76,14 +82,14 @@ const createTeddyCard = (teddy) => {
   main.appendChild(price);
   price.innerText = formatter.format(teddy.price / 100); // Utilisation fonction pour formatter le prix
 
-// Création d'une "div" description
-const description = document.createElement('div');
-description.classList.add('product-text-desc');
-text.appendChild(description);
-description.innerText = teddy.description; // Liens array contenu div
+  // Création d'une "div" description
+  const description = document.createElement('div');
+  description.classList.add('product-text-desc');
+  text.appendChild(description);
+  description.innerText = teddy.description; // Liens array contenu div
 
-// Retourne l'élément créer
-return a;
+  // Retourne l'élément créer
+  return a;
 };
 
 // Fonction qui utilise back end déjà fait
