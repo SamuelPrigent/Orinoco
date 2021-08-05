@@ -1,3 +1,4 @@
+// NEW FONCTION - 
 const fetchTeddy = async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get('id');
@@ -5,7 +6,7 @@ const fetchTeddy = async () => {
   if (!response.ok) {
     throw new Error('Tugudu');
   }
-  return response.json();
+  return response.json(); 
 };
 const replaceTextInElement = (selector, text) => {
   const title = document.querySelector(selector);
@@ -22,3 +23,4 @@ const main = async () => {
 };
 
 main();
+

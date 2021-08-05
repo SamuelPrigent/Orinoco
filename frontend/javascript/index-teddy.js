@@ -38,7 +38,7 @@ const formatter = new Intl.NumberFormat('fr-FR', {
 
  // FONCTION 2 - Recup tableau a partir de fetch
 const fetchTeddies = async () => {
-  const response = await fetch('http://localhost:3000/api/teddies');
+  const response = await fetch('http://localhost:3000/api/cameras');
   if (!response.ok) {
     throw new Error('Il y a eu une erreur');
   }
