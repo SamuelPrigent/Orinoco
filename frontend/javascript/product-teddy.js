@@ -30,6 +30,36 @@ const Replace = async () => {
 };
 
 
-// On lance la fonction
+// On lance la fonction de remplacement texte et image
 Replace();
 
+
+// ----------------------
+
+// Attribution const au lieux d'envoie des div color créé
+const colorBloc = document.querySelector('#ColorBloc');
+
+// FONCTION - créer div couleur selon couleur de l'object javascript 
+const createColorButton = (teddy) => {
+
+  // Création d'un élément de type liens "button"
+  const colorDiv = document.createElement('button');
+  colorBloc.appendChild(colorDiv);
+  colorDiv.classList.add('product-page-bloc-right-color-div');
+  colorDiv.innerText = teddy.colors; 
+
+  // Retourne l'élément
+  return colorDiv;
+};
+
+// FONCTION - création div couleur
+const autoAddColor = async () => {
+  const teddy = await fetchTeddies(); // Utilise fonction créé : pour avoir tableaux
+  for (const colors of teddy) { 
+    const teddyColor = createColorButton(colors); // Utilise fonction ColorButton
+    colorBloc.appendChild(teddyColor); // Ajout de toutes les card dans le bloc
+  }
+};
+
+// On lance la fonction de création de div couleur
+autoAddColor();
