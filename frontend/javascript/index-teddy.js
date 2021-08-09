@@ -1,43 +1,5 @@
-
-// Documentation tooltip des objets
-/**
- * @typedef {Object} Teddy
- * @property {Array<string>} colors - Les couleurs du teddy
- * @property {string} description - Description du teddy
- * @property {string} name - Nom du teddy
- * @property {number} price - Prix du teddy
- * @property {string} _id  - Id du teddy
- * @property {string} imageUrl - Url de l'image
- */
-
-/**
- * @returns {Promise<Array<Teddy>>} Teddies
- */
-
-/**
- *
- * @param {Teddy} teddy
- * @returns {HTMLAnchorElement} TeddyCard
- */
-// -------------------------------
-
-
-// FONCTIONS :
-// 1 - Formatter prix 
-// 2 - Fetch récupération tableau
-// 3 - Création de Card
-// 4 - Fonction main utilise fonctions 1 - 2 - 3 pour créer card et l'injecter dans le html
-
-
-// FONCTION 1 - formatage de prix json
-const formatter = new Intl.NumberFormat('fr-FR', {
-  style: 'currency',
-  currency: 'EUR',
-  minimumFractionDigits: 2,
-});
-
- // FONCTION 2 - Recup tableau a partir de fetch
-const fetchTeddies = async () => {
+ // FETCH - Recup des tableau a partir de fetch
+ const fetchTeddies = async () => {
   const response = await fetch('http://localhost:3000/api/teddies');
   if (!response.ok) {
     throw new Error('Il y a eu une erreur');
@@ -45,11 +7,18 @@ const fetchTeddies = async () => {
   return response.json();
 };
 
+// Formatage de prix json
+const formatter = new Intl.NumberFormat('fr-FR', {
+  style: 'currency',
+  currency: 'EUR',
+  minimumFractionDigits: 2,
+});
+
+
 // Attribution nom variable à un bloc / endroit du html
 const productBloc = document.querySelector('#product-bloc');
 
-
-// FONCTION 3 - Creation card html de teddy
+// Creation card html de teddy
 const createTeddyCard = (teddy) => {
 
   // Création d'un élément de type liens "a"
@@ -99,7 +68,7 @@ const createTeddyCard = (teddy) => {
   return a;
 };
 
-// FONCTION 4 - Utilise : fetchTeddies & createTeddyCard que l'on a créé
+// AutoAddCard - FetchTeddies + createTeddyCard
 const autoAddCard = async () => {
   const teddies = await fetchTeddies(); // Utilise fonction créé : pour avoir tableaux
   for (const teddy of teddies) { 
@@ -114,4 +83,35 @@ autoAddCard();
 
 
 
+
+
+
+
+
+
+
+// ----------------------------------------------------
+
+
+// Documentation tooltip des objets
+/**
+ * @typedef {Object} Teddy
+ * @property {Array<string>} colors - Les couleurs du teddy
+ * @property {string} description - Description du teddy
+ * @property {string} name - Nom du teddy
+ * @property {number} price - Prix du teddy
+ * @property {string} _id  - Id du teddy
+ * @property {string} imageUrl - Url de l'image
+ */
+
+/**
+ * @returns {Promise<Array<Teddy>>} Teddies
+ */
+
+/**
+ *
+ * @param {Teddy} teddy
+ * @returns {HTMLAnchorElement} TeddyCard
+ */
+// -------------------------------
 
