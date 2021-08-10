@@ -47,7 +47,7 @@
 }
 
 .panier-bloc-right-price {
-  font-size: 1.05em;
+  font-size: 0.95em;
   font-weight: 600;
 }
 
@@ -122,23 +122,25 @@
 .panier-bloc-left-separator3 {
   width: 97%;
   height: 1px;
-  margin-bottom: 8px;
-  margin-top: 8px;
+  margin-bottom: 5px;
+  margin-top: 5px;
   background-color: #cecece;
 }
 
 .panier-bloc-list-product {
   display: flex;
   width: 98%;
-  height: 120px;
+  height: 110px;
   border: 0px solid red;
   border-radius: 13px;
+  position: relative;
 }
 
 .panier-bloc-list-product-text {
   display: flex;
+  position: relative;
   flex-direction: column;
-  padding: 10px 15px 0px 15px;
+  padding: 3px 15px 0px 15px;
   border: 0px solid blue;
   width: 100%;
   height: auto;
@@ -149,26 +151,26 @@
     width: 100%;
     justify-content: space-between;
     border: 0px solid blue;
-    margin-bottom: 10px;
+    margin-bottom: 7px;
     font-weight: 500;
   }
 
   .panier-bloc-left-head-text {
-    font-size: 0.92em;
+    font-size: 0.9em;
   }
 }
 
 .panier-bloc-left-desc {
-  font-size: 0.86em;
-  color: #686868;
+  font-size: 0.8em;
+  color: #575757;
   text-align: justify;
   margin-bottom: 5px;
 }
 
 .panier-card-paddingratio {
   height: auto;
-  max-height: 120px;
-  max-width: 120px;
+  max-height: 110px;
+  max-width: 110px;
   width: 100%;
   position: relative;
   border-radius: 13px;
@@ -206,4 +208,29 @@
     margin-bottom: 80px;
     padding: 32px 30px 40px;
   }
+}
+
+.DeleteButton {
+  display: flex;
+  gap: 6px;
+  font-size: 0.86em;
+  color: #2a6d80;
+  align-items: center;
+  background-color: transparent;
+  position: absolute;
+  bottom: 1px;
+  left: 15px;
+}
+
+.DeleteText {
+  font-size: 0.92em;
+  color: #2f7285;
+}
+
+.DeleteText:hover {
+  color: #000000;
+}
+
+.DeleteButton:hover {
+  color: #000000;
 }
