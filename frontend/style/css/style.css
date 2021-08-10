@@ -622,7 +622,7 @@ body {
   width: 100%;
   justify-content: space-between;
   border: 0px solid blue;
-  margin-bottom: 7px;
+  margin-bottom: 9px;
   font-weight: 500;
 }
 .panier-bloc-list-product-text .panier-bloc-left-head-text {
@@ -686,7 +686,7 @@ body {
   align-items: center;
   background-color: transparent;
   position: absolute;
-  bottom: 1px;
+  bottom: 2px;
   left: 15px;
 }
 
