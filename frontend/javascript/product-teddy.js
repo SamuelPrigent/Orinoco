@@ -40,7 +40,7 @@ const Replace = async () => {
   replaceText('.product-page-bloc-right-title', teddy.name); // remplace nom
   replaceText('.product-page-bloc-right-price', formatter.format(teddy.price / 100)); // remplace prix
   replaceText('.product-page-bloc-right-desc', teddy.description); // remplace description
-  console.log(teddy); // retourne l'objet
+  // console.log(teddy); // retourne l'objet
 
   const img = document.querySelector('.page-card-paddingratio img');
   img.src = teddy.imageUrl; // remplace l'image
@@ -68,7 +68,7 @@ const createColorButton = (teddy) => {
   colorBloc.appendChild(colorDiv);
   colorDiv.classList.add('product-page-bloc-right-color-div');
   colorDiv.innerText = teddy;
-  console.log(teddy); // retourne couleurs de l'objet
+  // console.log(teddy); // retourne couleurs de l'objet
 
   // Retourne l'élément
   return colorDiv;
@@ -82,7 +82,7 @@ const autoAddColor = async () => {
     const color = createColorButton(repetition); // On crée le bouton 
     colorBloc.appendChild(color); // On place le bouton dans le bloc
   }
-  console.log(teddy); // retourne l'object
+  // console.log(teddy); // retourne l'object
 };
 
 // On lance la fonction de création de div couleur

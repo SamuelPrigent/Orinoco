@@ -234,3 +234,39 @@
 .DeleteButton:hover {
   color: #000000;
 }
+
+// Test local storage
+
+.localstorage-bloc {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 0px;
+  width: 300px;
+  border: 2px solid black;
+  padding: 20px;
+  gap: 10px;
+}
+
+.displayflex {
+  display: flex;
+  font-size: 1.1em;
+  gap: 5px;
+  border: 0px solid black;
+}
+
+.buttonenvoyer {
+  padding: 5px;
+  border: 1px solid black;
+}
+
+.buttontest {
+  border: 1px solid black;
+  font-size: 1.1em;
+  padding: 5px;
+}
+
+.wii {
+  width: 100%;
+}

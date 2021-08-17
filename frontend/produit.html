@@ -25,6 +25,9 @@
   <!-- Script qui personnalise la page en fonction du produits cliqué -->
   <script src="javascript/product-teddy.js" async></script>
 
+  <!-- Script du local storage -->
+  <script src="javascript/local-storage-2.js" async></script>
+
     <!-- Nom de l'onglet du site -->
     <title>Norbert</title>  
 </head>
@@ -85,14 +88,14 @@
     <div class="product-page-bloc-right">
 
         <div class="product-page-bloc-right-head">
-            <h2 class="product-page-bloc-right-title"></h2>
+            <h2 id="teddyname" class="product-page-bloc-right-title"></h2>
             <div class="product-page-bloc-right-price"></div>
         </div>
 
         <div class="product-page-bloc-right-desc"></div>
 
         <div class="product-page-bloc-right-separator"></div>
-        <div class="product-page-bloc-right-color">Couleur</div>
+        <div id="colorsModel" class="product-page-bloc-right-color">Couleur</div>
 
         <div id="ColorBloc" class="product-page-bloc-right-colors">
 
@@ -106,7 +109,7 @@
             -->
         </div>
 
-        <button class="product-page-bloc-right-add">Ajouter au panier</button>
+        <button onclick="addName" class="product-page-bloc-right-add">Ajouter au panier</button>
 
 
 

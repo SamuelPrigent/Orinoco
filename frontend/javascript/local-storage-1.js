@@ -1,5 +1,5 @@
 // Classe Teddy
-class Teddy {
+class teddy {
     constructor (name, color, quantity, price) {
     this.name = name;
     this.color = color;
@@ -8,10 +8,10 @@ class Teddy {
     }
 }
 
-
-// UI Class : Add - Remove 
+// UI Class :  
 class UI {
 
+// Display Teddy
     static displayTeddy () {
         const StoredTeddy = [
             {
@@ -28,14 +28,14 @@ class UI {
             }
         ];
 
-        console.log(StoredTeddy);
-
         const products  = StoredTeddy;
+        // Pour chaque Objet Teddy on en créé une ligne à ajouter au pannier
         products.forEach((Teddy) => UI.addTeddyToList(Teddy));
     }
 
 
-    static addTeddyToList(Teddy){
+
+    static addTeddyToList(teddy){
         const ProductList = document.querySelector(".panier-bloc-list");
 
         const ProductRow = document.createElement("div");
@@ -47,11 +47,11 @@ class UI {
             </div>
             <div class="panier-bloc-list-product-text">
                 <div class="panier-bloc-left-head-flex">
-                    <div class="panier-bloc-left-head-text">${Teddy.name}</div>
-                    <div class="panier-bloc-left-head-text">${Teddy.price}</div>
+                    <div class="panier-bloc-left-head-text">${teddy.name}</div>
+                    <div class="panier-bloc-left-head-text">${teddy.price}</div>
                 </div>
-                <div class="panier-bloc-left-desc">Couleur : ${Teddy.color} </div>
-                <div class="panier-bloc-left-desc">Quantité : ${Teddy.quantity}</div>
+                <div class="panier-bloc-left-desc">Couleur : ${teddy.color} </div>
+                <div class="panier-bloc-left-desc">Quantité : ${teddy.quantity}</div>
                 <button class="DeleteButton"> <div class="DeleteText">Supprimer</div> <i class="fas fa-times"></i></button>
             </div>
         </div>
@@ -61,6 +61,7 @@ class UI {
         ProductList.appendChild(ProductRow);
     }
 
+
 } 
 
 
@@ -68,6 +69,11 @@ class UI {
 // document.addEventListener("DOMContentLoaded", UI.displayTeddy);
 
 UI.displayTeddy();
+
+
+
+// ADD élément dans le local storage
+
 
 
 
