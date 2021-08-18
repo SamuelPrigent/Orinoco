@@ -37,6 +37,18 @@ const replaceText = (selector, text) => {
 // FONCTION 2 - Remplacement du contenu de page
 const Replace = async () => {
   const teddy = await fetchTeddy();
+
+// Button ADD Object Teddy in Local Storage
+ButtonAdd.addEventListener("click", (e) => {
+e.preventDefault();
+localStorage.setItem("Panier", JSON.stringify(teddy));
+
+const x = localStorage.getItem("Panier");
+console.log(JSON.parse(x))
+}
+)
+
+
   replaceText('.product-page-bloc-right-title', teddy.name); // remplace nom
   replaceText('.product-page-bloc-right-price', formatter.format(teddy.price / 100)); // remplace prix
   replaceText('.product-page-bloc-right-desc', teddy.description); // remplace description

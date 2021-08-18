@@ -15,16 +15,16 @@ class UI {
     static displayTeddy () {
         const StoredTeddy = [
             {
-                name = "Norbert",
-                color = "Chocolate",
-                quantity = 1,
-                price = 29,
+                name: "Norbert",
+                color: "Chocolate",
+                quantity: 1,
+                price: 2900,
             },
             {
-                name = "Arnold",
-                color = "White",
-                quantity = 1,
-                price = 39,
+                name: "Arnold",
+                color: "White",
+                quantity: 1,
+                price: 3900,
             }
         ];
 
@@ -35,12 +35,17 @@ class UI {
 
 
 
-    static addTeddyToList(teddy){
+    static addTeddyToList(teddy, quantity) {
+    // pour éviter d'ajouter une ligne si le produit a déjà été ajouté seul la quantité sera modifié
+    if (quantity === 0) {
+        return;
+    }
+
         const ProductList = document.querySelector(".panier-bloc-list");
 
         const ProductRow = document.createElement("div");
 
-        ProductRow.innerHTML = `
+        ProductRow.innerHTML = /*html*/` 
         <div class="panier-bloc-list-product">
             <div class="panier-card-paddingratio">
                 <img src="../backend/images/teddy_1.jpg"/>
@@ -51,7 +56,7 @@ class UI {
                     <div class="panier-bloc-left-head-text">${teddy.price}</div>
                 </div>
                 <div class="panier-bloc-left-desc">Couleur : ${teddy.color} </div>
-                <div class="panier-bloc-left-desc">Quantité : ${teddy.quantity}</div>
+                <div class="panier-bloc-left-desc">Quantité : ${quantity}</div>
                 <button class="DeleteButton"> <div class="DeleteText">Supprimer</div> <i class="fas fa-times"></i></button>
             </div>
         </div>
@@ -70,9 +75,6 @@ class UI {
 
 UI.displayTeddy();
 
-
-
-// ADD élément dans le local storage
 
 
 
