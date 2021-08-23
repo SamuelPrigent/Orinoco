@@ -25,11 +25,8 @@
   <!-- Script qui personnalise la page en fonction du produits cliqué -->
   <script src="javascript/product-teddy.js" async></script>
 
-  <!-- Script bouton add in local storage -->
-  <script src="javascript/set-item.js" async></script>
-
     <!-- Nom de l'onglet du site -->
-    <title>Norbert</title>  
+    <title id=titlepage ></title>  
 </head>
 
 <!-- Body FULL PAGE -->
@@ -74,45 +71,24 @@
 <div class="product-page-bloc">
 
     <div class="product-page-bloc-left">
-
             <div class="page-card-paddingratio PicLoading">
                 <img alt="" src=""/>
                 <a class="back-icon" href="index.html">
                         <i class="fas fa-arrow-left"></i>
                 </a>
             </div>
-
-
     </div>
 
     <div class="product-page-bloc-right">
-
         <div class="product-page-bloc-right-head">
             <h2 id="teddyname" class="product-page-bloc-right-title"></h2>
             <div class="product-page-bloc-right-price"></div>
         </div>
-
         <div class="product-page-bloc-right-desc"></div>
-
         <div class="product-page-bloc-right-separator"></div>
         <div id="colorsModel" class="product-page-bloc-right-color">Couleur</div>
-
-        <div id="ColorBloc" class="product-page-bloc-right-colors">
-
-
-
-            <!--
-            <button class="product-page-bloc-right-color-div tan"></button>
-            <button class="product-page-bloc-right-color-div chocolate"></button>
-            <button class="product-page-bloc-right-color-div black"></button>
-            <button class="product-page-bloc-right-color-div white"></button>
-            -->
-        </div>
-
+        <div id="ColorBloc" class="product-page-bloc-right-colors"></div>
         <button id="ButtonAdd" class="product-page-bloc-right-add">Ajouter au panier</button>
-
-
-
     </div>
 
 </div> <!-- fin product page bloc -->

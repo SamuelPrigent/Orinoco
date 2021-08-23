@@ -1,5 +1,80 @@
+// const de formatage de prix
+const formatter = new Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 2,
+  });
+
+// UI Class :  
+class UI {
+
+    static displayTeddy () {
+
+Object.entries(localStorage).forEach((entries) => {
+    UI.addTeddyToList(entries); 
+   });
+
+
+}
+
+    static addTeddyToList(obj) {
+
+// pour ajouter une ligne si le produit a déjà été ajouté seul la quantité sera modifié
+// mais il faut ajouter un calcul pour quantifier
+
+    if (obj.quantity === 0) {
+        return;
+    }
+
+// Log pour comprendre ce qui est ajouté
+/*
+    console.log("Object ajouté =", obj);
+    console.log("Target", JSON.parse(obj[1]) ); // technique pour target avec un point à la fin
+*/
+
+        const ProductList = document.querySelector(".panier-bloc-list");
+
+        const ProductRow = document.createElement("div");
+
+        ProductRow.innerHTML = /*html*/` 
+        <div class="panier-bloc-list-product">
+            <div class="panier-card-paddingratio">
+                <img src="${JSON.parse(obj[1]).imageUrl}"/>
+            </div>
+            <div class="panier-bloc-list-product-text">
+                <div class="panier-bloc-left-head-flex">
+                    <div class="panier-bloc-left-head-text">${JSON.parse(obj[1]).name}</div>
+                    <div class="panier-bloc-left-head-text">${formatter.format(JSON.parse(obj[1]).price / 100)}</div>
+                </div>
+                <div class="panier-bloc-left-desc">Couleur : ${obj.color} </div>
+                <div class="panier-bloc-left-desc">Quantité : ${obj.quantity}</div>
+                <button class="DeleteButton"> <div class="DeleteText">Supprimer</div> <i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="panier-bloc-left-separator3"></div>
+        `;
+
+        ProductList.appendChild(ProductRow);
+    }
+} 
+
+
+// Event : affichage d'un pannier de base
+// document.addEventListener("DOMContentLoaded", UI.displayTeddy);
+
+UI.displayTeddy();
+
+
+
+
+
+
+// ----------------------------------------------
+// Ancien code
+
+/*
 // Classe Teddy
-class teddy {
+class teddyClass {
     constructor (name, color, quantity, price) {
     this.name = name;
     this.color = color;
@@ -7,12 +82,10 @@ class teddy {
     this.price = price;
     }
 }
+*/
 
-// UI Class :  
-class UI {
-
-// Display Teddy
-    static displayTeddy () {
+// code qui étant dans display teddy
+        /*
         const StoredTeddy = [
             {
                 name: "Norbert",
@@ -27,56 +100,5 @@ class UI {
                 price: 3900,
             }
         ];
-
-        const products  = StoredTeddy;
-        // Pour chaque Objet Teddy on en créé une ligne à ajouter au pannier
-        products.forEach((Teddy) => UI.addTeddyToList(Teddy));
-    }
-
-
-
-    static addTeddyToList(teddy, quantity) {
-    // pour éviter d'ajouter une ligne si le produit a déjà été ajouté seul la quantité sera modifié
-    if (quantity === 0) {
-        return;
-    }
-
-        const ProductList = document.querySelector(".panier-bloc-list");
-
-        const ProductRow = document.createElement("div");
-
-        ProductRow.innerHTML = /*html*/` 
-        <div class="panier-bloc-list-product">
-            <div class="panier-card-paddingratio">
-                <img src="../backend/images/teddy_1.jpg"/>
-            </div>
-            <div class="panier-bloc-list-product-text">
-                <div class="panier-bloc-left-head-flex">
-                    <div class="panier-bloc-left-head-text">${teddy.name}</div>
-                    <div class="panier-bloc-left-head-text">${teddy.price}</div>
-                </div>
-                <div class="panier-bloc-left-desc">Couleur : ${teddy.color} </div>
-                <div class="panier-bloc-left-desc">Quantité : ${quantity}</div>
-                <button class="DeleteButton"> <div class="DeleteText">Supprimer</div> <i class="fas fa-times"></i></button>
-            </div>
-        </div>
-        <div class="panier-bloc-left-separator3"></div>
-        `;
-
-        ProductList.appendChild(ProductRow);
-    }
-
-
-} 
-
-
-// Event : affichage d'un pannier de base
-// document.addEventListener("DOMContentLoaded", UI.displayTeddy);
-
-UI.displayTeddy();
-
-
-
-
-
-
+        // const products  = StoredTeddy;
+        */

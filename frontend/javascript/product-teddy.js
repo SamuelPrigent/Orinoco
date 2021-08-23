@@ -34,25 +34,33 @@ const replaceText = (selector, text) => {
   content.innerText = text;
 };
 
-// FONCTION 2 - Remplacement du contenu de page
+// ---------------------- Fetch Teddy + Fonction
 const Replace = async () => {
   const teddy = await fetchTeddy();
+
+// log page product
+console.log("Fetch " + teddy.name, teddy); // Montre l'objet
+
+// ---------------------- Bouton Ajouter au panier -> Stringify
 
 // Button ADD Object Teddy in Local Storage
 ButtonAdd.addEventListener("click", (e) => {
 e.preventDefault();
-localStorage.setItem("Panier", JSON.stringify(teddy));
+localStorage.setItem(teddy.name, JSON.stringify(teddy)); // pourrait être teddy._id
+console.log(teddy.name + " >> Local Storage"); // Msg d'ajout
 
-const x = localStorage.getItem("Panier");
-console.log(JSON.parse(x))
+// Add Quantity to Object ?
+// [teddy._id].quantity++;
+
 }
 )
 
+// ---------------------- Remplace le texte
 
   replaceText('.product-page-bloc-right-title', teddy.name); // remplace nom
   replaceText('.product-page-bloc-right-price', formatter.format(teddy.price / 100)); // remplace prix
   replaceText('.product-page-bloc-right-desc', teddy.description); // remplace description
-  // console.log(teddy); // retourne l'objet
+  replaceText('#titlepage', teddy.name); // remplace onglet
 
   const img = document.querySelector('.page-card-paddingratio img');
   img.src = teddy.imageUrl; // remplace l'image
@@ -62,13 +70,12 @@ console.log(JSON.parse(x))
 Replace();
 
 
-// ----------------------
+
+// ---------------------- Création bloc de couleur
+
 
 // Attribution const au lieux d'envoie des div color créé
 const colorBloc = document.querySelector('#ColorBloc');
-
-// Nouvelle constante ? 
-
 
 
 // Créer div couleur selon couleur de l'object javascript 
