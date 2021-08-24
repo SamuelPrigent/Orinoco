@@ -47,10 +47,15 @@ console.log("Fetch " + teddy.name, teddy); // Montre l'objet
 ButtonAdd.addEventListener("click", (e) => {
 e.preventDefault();
 localStorage.setItem(teddy.name, JSON.stringify(teddy)); // pourrait être teddy._id
-console.log(teddy.name + " >> Local Storage"); // Msg d'ajout
 
-// Add Quantity to Object ?
-// [teddy._id].quantity++;
+// Add Quantity to Object
+if (teddy.quantity == null || 0) {teddy.quantity = 1;}
+else {teddy.quantity++;}
+
+
+// Console log Add button
+console.log("+ " + teddy.name); // Produts ajouté 
+console.log ("Quantity :", teddy.quantity); // quantité totale
 
 }
 )

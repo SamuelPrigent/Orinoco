@@ -8,12 +8,13 @@ const formatter = new Intl.NumberFormat('fr-FR', {
 // UI Class :  
 class UI {
 
+// récupère la liste des produits dans la panier via le local storage
+
     static displayTeddy () {
 
-Object.entries(localStorage).forEach((entries) => {
+    Object.entries(localStorage).forEach((entries) => {
     UI.addTeddyToList(entries); 
    });
-
 
 }
 
@@ -27,10 +28,11 @@ Object.entries(localStorage).forEach((entries) => {
     }
 
 // Log pour comprendre ce qui est ajouté
-/*
-    console.log("Object ajouté =", obj);
-    console.log("Target", JSON.parse(obj[1]) ); // technique pour target avec un point à la fin
-*/
+console.log(JSON.parse(obj[1]).name, obj);
+// console.log("Target array 1 :", JSON.parse(obj[1]) ); // technique pour target avec un point à la fin
+
+
+
 
         const ProductList = document.querySelector(".panier-bloc-list");
 
@@ -47,7 +49,7 @@ Object.entries(localStorage).forEach((entries) => {
                     <div class="panier-bloc-left-head-text">${formatter.format(JSON.parse(obj[1]).price / 100)}</div>
                 </div>
                 <div class="panier-bloc-left-desc">Couleur : ${obj.color} </div>
-                <div class="panier-bloc-left-desc">Quantité : ${obj.quantity}</div>
+                <div class="panier-bloc-left-desc">Quantité : ${JSON.parse(obj[1]).quantity}</div>
                 <button class="DeleteButton"> <div class="DeleteText">Supprimer</div> <i class="fas fa-times"></i></button>
             </div>
         </div>
