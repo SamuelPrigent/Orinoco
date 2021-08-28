@@ -31,9 +31,6 @@ class UI {
 console.log(JSON.parse(obj[1]).name, obj);
 // console.log("Target array 1 :", JSON.parse(obj[1]) ); // technique pour target avec un point à la fin
 
-
-
-
         const ProductList = document.querySelector(".panier-bloc-list");
 
         const ProductRow = document.createElement("div");

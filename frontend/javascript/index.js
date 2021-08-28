@@ -24,7 +24,7 @@ const createTeddyCard = (teddy) => {
   // Création d'un élément de type liens "a"
   const a = document.createElement('a');
   a.classList.add('product-card');
-  a.setAttribute('href', `produit.html?id=${teddy._id}`); // Liens href array id produits pour nommer url
+  a.setAttribute('href', `product.html?id=${teddy._id}`); // Liens href array id produits pour nommer url
 
   // Création d'une "div" paddingratio
   const paddingratio = document.createElement('div');

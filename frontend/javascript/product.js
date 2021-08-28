@@ -46,21 +46,33 @@ console.log("Fetch " + teddy.name, teddy); // Montre l'objet
 // Button ADD Object Teddy in Local Storage
 ButtonAdd.addEventListener("click", (e) => {
 e.preventDefault();
-localStorage.setItem(teddy.name, JSON.stringify(teddy)); // pourrait être teddy._id
 
+// Créer un clone ou un nouvel objet à partir du local storage
+// Grâce à la constante teddyLocal la quantité ne se reset pas au reload de la page
+const teddyLocal = JSON.parse(localStorage.getItem(teddy.name)) || Object.assign({}, teddy);
+// Add quantity to object
+if (!teddyLocal.quantity) {
+  teddyLocal.quantity = 0;
+}
+teddyLocal.quantity++;
+
+// Set to local storage
+localStorage.setItem(teddyLocal.name, JSON.stringify(teddyLocal)); // next : teddy.name + color selected
+
+// Console log Add button
+console.log("+ " + teddyLocal.name); // Produts ajouté 
+console.log ("Quantity :", teddyLocal.quantity); // quantité totale
+
+
+/* OLD CODE sans clone
 // Add Quantity to Object
 if (teddy.quantity == null || 0) {teddy.quantity = 1;}
 else {teddy.quantity++;}
-
-
-// Console log Add button
-console.log("+ " + teddy.name); // Produts ajouté 
-console.log ("Quantity :", teddy.quantity); // quantité totale
-
+*/
 }
 )
 
-// ---------------------- Remplace le texte
+// ---------------------- Personalise le texte en fonction du teddy
 
   replaceText('.product-page-bloc-right-title', teddy.name); // remplace nom
   replaceText('.product-page-bloc-right-price', formatter.format(teddy.price / 100)); // remplace prix
@@ -74,8 +86,6 @@ console.log ("Quantity :", teddy.quantity); // quantité totale
 // On lance la fonction 2
 Replace();
 
-
-
 // ---------------------- Création bloc de couleur
 
 
@@ -84,15 +94,30 @@ const colorBloc = document.querySelector('#ColorBloc');
 
 
 // Créer div couleur selon couleur de l'object javascript 
-const createColorButton = (teddy) => {
+const createColorButton = (teddyColor) => {
   fetchTeddy(); 
 
-  // Création d'un élément de type liens "button"
-  const colorDiv = document.createElement('button');
-  colorBloc.appendChild(colorDiv);
-  colorDiv.classList.add('product-page-bloc-right-color-div');
-  colorDiv.innerText = teddy;
-  // console.log(teddy); // retourne couleurs de l'objet
+// div radio
+const radio = document.createElement("input");
+radio.name = "color"; // pour target via l'event listener / ajout dans le panier
+radio.type = "radio";
+radio.id = teddyColor; // pour attribuer le bouton au label
+radio.value = teddyColor;
+radio.hidden = false;
+
+// colorDiv 
+const colorDiv = document.createElement("div");
+colorDiv.classList.add("product-page-bloc-right-color-div");
+
+// Label + pour selectionner au clic
+const label = document.createElement("label");
+label.htmlFor = teddyColor;
+label.innerText = teddyColor;
+
+// Structure
+colorBloc.appendChild(colorDiv);
+colorDiv.appendChild(radio);
+colorDiv.appendChild(label);
 
   // Retourne l'élément
   return colorDiv;
@@ -111,3 +136,9 @@ const autoAddColor = async () => {
 
 // On lance la fonction de création de div couleur
 autoAddColor();
+
+
+
+
+
+

@@ -384,6 +384,9 @@ body {
   font-weight: 300;
   padding: 11px;
 }
+.product-page-bloc .product-page-bloc-right-color-div-selected {
+  background-color: blue !important;
+}
 .product-page-bloc .tan {
   background-color: tan;
 }
