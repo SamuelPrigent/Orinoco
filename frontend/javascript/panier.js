@@ -8,6 +8,21 @@ const formatter = new Intl.NumberFormat('fr-FR', {
 // On initialise le total panier en dehors de la classe UI
 let totalPanier = 0;
 
+
+// Boutton > enlever un produit
+const removeProduct = async (obj) => {
+
+    const deleteButton1 = document.getElementsByClassName("deleteButton")[0]; 
+    
+        deleteButton1.addEventListener("click", e => {
+            e.preventDefault();
+            console.log("Key =" , obj);
+            // localStorage.clear(obj[0]);
+        })
+}
+
+
+
 // UI Class :  
 class UI {
 
@@ -17,6 +32,7 @@ class UI {
 
     Object.entries(localStorage).forEach((entries) => {
     UI.addTeddyToList(entries);
+    removeProduct(entries); // on déclare ici car besoins de dire que l'argument = objets 
     });
 
 }
@@ -25,6 +41,9 @@ class UI {
 
 // pour ajouter une ligne si le produit a déjà été ajouté seul la quantité sera modifié
 // mais il faut ajouter un calcul pour quantifier
+
+// removeProduct(obj); // si je fais ici ça target correctement ?
+
 
     if (obj.quantity === 0) {
         return;
@@ -47,9 +66,8 @@ console.log(JSON.parse(obj[1]).name, obj);
         // PROBLEME AVEC ID qui ont des espaces
 
         // La constante key permettra : 
-        // soit remplacer l'id
-        // soit target lors de l'action que le bouton =>
-
+        // soit remplacer l'id ?
+        // soit target lors de l'action du bouton ?
 
         ProductRow.innerHTML = /*html*/` 
         <div class="panier-bloc-list-product">
@@ -63,7 +81,7 @@ console.log(JSON.parse(obj[1]).name, obj);
                 </div>
                 <div class="panier-bloc-left-desc">Couleur : ${obj[0].split(" - ")[1]} </div>
                 <div class="panier-bloc-left-desc">Quantité : ${JSON.parse(obj[1]).quantity}</div>
-                <button id="deleteButton" class="deleteButton"> <div class="DeleteText">Supprimer</div> <i class="fas fa-times"></i></button>
+                <button class="deleteButton"> <div class="DeleteText">Supprimer</div> <i class="fas fa-times"></i></button>
             </div>
         </div>
         <div class="panier-bloc-left-separator3"></div>
@@ -72,9 +90,10 @@ console.log(JSON.parse(obj[1]).name, obj);
 // id="${key}" // ou // id="deleteButton2"
 // permet d'avoir une id sur le boutou supprimer = à la clés que l'on veut target pour remove item => utile ?
 
-
         ProductList.appendChild(ProductRow);
-    }
+
+
+}
 
 
 // Objectif = faire le total du panier
@@ -112,28 +131,10 @@ content2.innerText = formatter.format(totalPanier + 4.99);
 }
 
 
-
 } 
 
 
-
-const removeProduct = async () => {
-
-const deleteRow = document.getElementsByClassName("deleteButton"); 
-
-    deleteRow.addEventListener("click", e => {
-        e.preventDefault();
-        console.log("key =" , key);
-    }
-    )
-}
-
-removeProduct();
-
-
-
-
-// Event : Affichage d'un pannier de base
+// UI fonction d'affichage / Teddy & Prix : 
 
 UI.displayTeddy(); // Affiche la liste des produits du local storage sous forme de panier
 
@@ -141,4 +142,20 @@ UI.totalShoppingCart(); // Calcul le prix de chaque ligne et la stock dans une v
 
 UI.replaceTotal(); // Remplace la valeur calculé dans le html
 
+
+
+// Les boutons delete product
+
+// Boutton > vider le pannier
+const removeAll = async () => {
+    
+    deleteAll.addEventListener("click", e => {
+        e.preventDefault();
+        localStorage.clear();
+        console.log("Local Storage vide !");
+        window.location.reload();
+    })
+}
+removeAll(); // on le déclare ici et pas dans le statics par pas besoins de target un objet 
+    
 
