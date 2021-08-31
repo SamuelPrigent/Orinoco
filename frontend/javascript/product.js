@@ -1,4 +1,4 @@
-// FETCH - Création du liens
+// FETCH - Permet de créer : liens + page à partir du même html lorsque l'on clique sur un teddy
 const fetchTeddy = async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get('id'); // déclare et obtient l'id de l'url que l'on a écris par la création du liens de card 
@@ -6,10 +6,10 @@ const fetchTeddy = async () => {
   if (!response.ok) {
     throw new Error('Error Fetch');
   }
-  return response.json(); 
+  return response.json();
 };
 
- // FETCH - Recup tableau
+ // FETCH - Permet de faire une réponse sous forme de grid produits
  const fetchTeddies = async () => {
   const response = await fetch('http://localhost:3000/api/teddies');
   if (!response.ok) {
@@ -34,6 +34,7 @@ const replaceText = (selector, text) => {
   content.innerText = text;
 };
 
+
 // ---------------------- Fetch Teddy + Fonction
 const Replace = async () => {
   const teddy = await fetchTeddy();
@@ -47,9 +48,17 @@ console.log("Fetch " + teddy.name, teddy); // Montre l'objet
 ButtonAdd.addEventListener("click", (e) => {
 e.preventDefault();
 
-// Créer un clone ou un nouvel objet à partir du local storage
-// Grâce à la constante teddyLocal la quantité ne se reset pas au reload de la page
-const teddyLocal = JSON.parse(localStorage.getItem(teddy.name)) || Object.assign({}, teddy);
+// Event listener / Radio button selected
+const radiosButton = document.querySelectorAll("input[type=radio][name=color]"); 
+const colorSelected = Array.from(radiosButton).find((item) => item.checked);
+
+// Key personnalisé
+const color = colorSelected.value;
+const key = `${teddy.name} - ${color}`; // nom produit dans le local storage
+
+// Créer un clone ou un nouvel objet à partir du local storage / pour que qty ne reset pas au reload 
+const teddyLocal = JSON.parse(localStorage.getItem(key)) || Object.assign({}, teddy); // teddy.name remplacé par key pour avoir un teddy par couleur
+
 // Add quantity to object
 if (!teddyLocal.quantity) {
   teddyLocal.quantity = 0;
@@ -57,7 +66,7 @@ if (!teddyLocal.quantity) {
 teddyLocal.quantity++;
 
 // Set to local storage
-localStorage.setItem(teddyLocal.name, JSON.stringify(teddyLocal)); // next : teddy.name + color selected
+localStorage.setItem(key, JSON.stringify(teddyLocal)); // next : teddy.name + color selected
 
 // Console log Add button
 console.log("+ " + teddyLocal.name); // Produts ajouté 
@@ -88,10 +97,8 @@ Replace();
 
 // ---------------------- Création bloc de couleur
 
-
 // Attribution const au lieux d'envoie des div color créé
 const colorBloc = document.querySelector('#ColorBloc');
-
 
 // Créer div couleur selon couleur de l'object javascript 
 const createColorButton = (teddyColor) => {
