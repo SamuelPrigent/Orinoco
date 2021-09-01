@@ -136,9 +136,7 @@ UI.totalShoppingCart(); // Calcul le prix de chaque ligne et la stock dans une v
 UI.replaceTotal(); // Remplace la valeur calculé dans le html
 
 
-
 // Les boutons delete product
-
 // Boutton > vider le pannier
 const removeAll = async () => {
     
@@ -151,4 +149,40 @@ const removeAll = async () => {
 }
 removeAll(); // on le déclare ici et pas dans le statics par pas besoins de target un objet 
     
+
+// Formulaire de commande 
+
+// Data = Formulaire + id items pannier
+/*
+
+const data = {
+    contact: {
+      nom,
+      prenom,
+      adresse,
+      ville,
+      email,
+    },
+    products: [
+      // tableaux d'ids des produits du panier
+    ],
+  };
+
+  // Exemple pour le post 
+  // récupère données de const data 
+
+  const res = await fetch("http://localhost:3000/api/teddies/order", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  const json = await res.json();
+
+
+
+*/
+
 
