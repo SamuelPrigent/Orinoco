@@ -9,19 +9,6 @@ const formatter = new Intl.NumberFormat('fr-FR', {
 let totalPanier = 0;
 
 
-// Boutton > enlever un produit
-const removeProduct = async (obj) => {
-
-    const deleteButton1 = document.getElementsByClassName("deleteButton")[0]; 
-    
-        deleteButton1.addEventListener("click", e => {
-            e.preventDefault();
-            console.log("Key =" , obj);
-            // localStorage.clear(obj[0]);
-        })
-}
-
-
 
 // UI Class :  
 class UI {
@@ -32,7 +19,6 @@ class UI {
 
     Object.entries(localStorage).forEach((entries) => {
     UI.addTeddyToList(entries);
-    removeProduct(entries); // on déclare ici car besoins de dire que l'argument = objets 
     });
 
 }
@@ -41,9 +27,6 @@ class UI {
 
 // pour ajouter une ligne si le produit a déjà été ajouté seul la quantité sera modifié
 // mais il faut ajouter un calcul pour quantifier
-
-// removeProduct(obj); // si je fais ici ça target correctement ?
-
 
     if (obj.quantity === 0) {
         return;
@@ -87,11 +70,21 @@ console.log(JSON.parse(obj[1]).name, obj);
         <div class="panier-bloc-left-separator3"></div>
         `;
 
-// id="${key}" // ou // id="deleteButton2"
-// permet d'avoir une id sur le boutou supprimer = à la clés que l'on veut target pour remove item => utile ?
+// id pour bouton : id="${key}" // ou // id="deleteButton2"
+ProductList.appendChild(ProductRow);
 
-        ProductList.appendChild(ProductRow);
 
+// Boutton > enlever un produit
+const deleteButton1 = ProductRow.querySelector(".deleteButton"); 
+    
+deleteButton1.addEventListener("click", e => {
+    e.preventDefault();
+
+    // On remove l'item via la const key créé plus haut
+    console.log("Remove :" , key);
+    localStorage.removeItem(key);
+    window.location.reload();
+})
 
 }
 
