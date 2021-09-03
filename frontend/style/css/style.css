@@ -147,6 +147,21 @@ body {
     display: initial;
   }
 }
+.numbersize {
+  background-color: #a00f0fbd;
+  display: flex;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 0.6em;
+  color: white;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  right: 8px;
+  bottom: 8px;
+}
+
 .product-category {
   display: flex;
   width: auto;

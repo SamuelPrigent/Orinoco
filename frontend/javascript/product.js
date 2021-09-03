@@ -145,7 +145,27 @@ const autoAddColor = async () => {
 autoAddColor();
 
 
+let totalQuantity2 = 0;
+
+function totalQuantity() {
+  Object.entries(localStorage).forEach((entries) => {QuantityOfProduct(entries);})
+  }
 
 
+  function QuantityOfProduct(obj) {
+      
+    //let totalQuantity;
+     let GlobalQuantity = (JSON.parse(obj[1]).quantity);
+     totalQuantity2 = totalQuantity2 + GlobalQuantity;
+     console.log("Quantity of Product =", totalQuantity2);
+     return totalQuantity2; 
+ }
 
+ function replaceTotal() {
+  const content3 = document.querySelector("#QuantityNumber");
+  content3.innerText = totalQuantity2;
+  }
+  
 
+  totalQuantity();
+  replaceTotal();

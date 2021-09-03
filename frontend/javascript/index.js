@@ -115,3 +115,28 @@ autoAddCard();
  */
 // -------------------------------
 
+
+let totalQuantity3 = 0;
+
+function totalQuantity() {
+  Object.entries(localStorage).forEach((entries) => {QuantityOfProduct(entries);})
+  }
+
+
+  function QuantityOfProduct(obj) {
+      
+    //let totalQuantity;
+     let GlobalQuantity = (JSON.parse(obj[1]).quantity);
+     totalQuantity3 = totalQuantity3 + GlobalQuantity;
+     console.log("Quantity of Product =", totalQuantity3);
+     return totalQuantity3; 
+ }
+
+ function replaceTotal() {
+  const content3 = document.querySelector("#QuantityNumber");
+  content3.innerText = totalQuantity3;
+  }
+  
+
+  totalQuantity();
+  replaceTotal();

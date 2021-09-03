@@ -5,9 +5,9 @@ const formatter = new Intl.NumberFormat('fr-FR', {
     minimumFractionDigits: 2,
   });
 
-// On initialise le total panier en dehors de la classe UI
+// On initialise des variables utilisés plus tard en dehors de la classe UI
 let totalPanier = 0;
-
+let totalQuantity = 0;
 
 
 // UI Class :  
@@ -115,12 +115,31 @@ return totalPanier;
 // mais je voudrais qu'il retourne une valeure
 }
 
+static totalQuantity() {
+    Object.entries(localStorage).forEach((entries) => {UI.QuantityOfProduct(entries);})
+    }
+
+static QuantityOfProduct(obj) {
+      
+   //let totalQuantity;
+    let GlobalQuantity = (JSON.parse(obj[1]).quantity);
+    
+    totalQuantity = totalQuantity + GlobalQuantity;
+
+    console.log("Quantity of Product =", totalQuantity);
+    
+    return totalQuantity; 
+}
+
+
 // Remplace prix panier par valeur calculé
 static replaceTotal() {
 const content = document.querySelector("#SousTotal");
 content.innerText = formatter.format(totalPanier);
 const content2 = document.querySelector("#SousTotal2");
 content2.innerText = formatter.format(totalPanier + 4.99);
+const content3 = document.querySelector("#QuantityNumber");
+content3.innerText = totalQuantity;
 }
 
 
@@ -133,7 +152,10 @@ UI.displayTeddy(); // Affiche la liste des produits du local storage sous forme 
 
 UI.totalShoppingCart(); // Calcul le prix de chaque ligne et la stock dans une valeur
 
+UI.totalQuantity();
+
 UI.replaceTotal(); // Remplace la valeur calculé dans le html
+
 
 
 // Les boutons delete product
