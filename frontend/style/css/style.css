@@ -490,7 +490,7 @@ body {
   font-size: 0.88em;
   width: 600px;
   margin: auto;
-  margin-top: 40px;
+  margin-top: 45px;
 }
 
 .panier-bloc-bottom-column {
@@ -607,7 +607,7 @@ body {
 
 .panier-bloc-bottom-add {
   width: 305px;
-  margin-top: 25px;
+  margin-top: 30px;
   height: 61px;
   border-radius: 30px;
   background-color: black;

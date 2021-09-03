@@ -137,39 +137,58 @@ UI.replaceTotal(); // Remplace la valeur calculé dans le html
 
 
 // Les boutons delete product
-// Boutton > vider le pannier
-const removeAll = async () => {
-    
-    deleteAll.addEventListener("click", e => {
-        e.preventDefault();
-        localStorage.clear();
-        console.log("Local Storage vide !");
-        window.location.reload();
-    })
-}
-removeAll(); // on le déclare ici et pas dans le statics par pas besoins de target un objet 
+// Boutton > vider le pannier    
+deleteAll.addEventListener("click", e => {
+    e.preventDefault();
+    localStorage.clear();
+    console.log("Local Storage vide !");
+    window.location.reload();
+})
     
 
-// Formulaire de commande 
-
-// Data = Formulaire + id items pannier
 /*
+// Les infos qu'on pourrait rajouter
+const color_command = Object.keys(localStorage).map((item) => (item.split(" - ")[1]));
+const quantity_command = Object.entries(localStorage).map((item) => JSON.parse(item[1]).quantity);
 
+console.log("Array of Colors :", color_command);
+console.log("Array of Quantity :", quantity_command);
+*/
+
+// Formulaire de commande / Action on Click
+
+// Infos demandé par le back end 
+const ids = Object.values(localStorage).map((item) => JSON.parse(item)._id);
+
+// const data = recup données panier
 const data = {
     contact: {
-      nom,
-      prenom,
-      adresse,
-      ville,
+      firstName,
+      lastName,
+      adress,
+      city,
       email,
     },
-    products: [
-      // tableaux d'ids des produits du panier
-    ],
+    products: [ids], // array off ids du panier
   };
 
-  // Exemple pour le post 
-  // récupère données de const data 
+
+
+  document.addEventListener("submit", (e) => {
+    // alert("Commande envoyé !");
+    e.preventDefault();
+    console.log("Commande envoyé !", ids);
+    // ------
+
+    // data - firstName, lastName, adress, city, email
+    const inputs = document.getElementById("form-contact").getElementsByTagName("input");
+    console.log(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value, inputs[4].value);
+})
+
+
+
+  // Exemple post formulaire ???
+/*
 
   const res = await fetch("http://localhost:3000/api/teddies/order", {
     method: "POST",
@@ -179,10 +198,31 @@ const data = {
     },
     body: JSON.stringify(data),
   });
-  const json = await res.json();
-
-
+  const json = res.json();
+console.log(json)
 
 */
 
 
+// Exemple get data au dessus du is ???
+/* 
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const ids = ... ;
+    const  formData = new FormData(e.target)
+    formData.getAll(),
+}
+)
+
+*/
+
+
+/* 
+    // data
+    const firstName = document.querySelector("#firstName");
+    const lastName = document.querySelector("#lastName");
+    const adress = document.querySelector("#adress");
+    const city = document.querySelector("#city");
+    const email = document.querySelector("#email");
+    console.log(firstName.value, lastName.value, adress.value, city.value, email.value);
+*/

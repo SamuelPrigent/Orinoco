@@ -146,6 +146,10 @@ button:active {
   -webkit-tap-highlight-color: transparent;
 }
 
+input {
+  border: none;
+}
+
 /* Reset link color bellow */
 a,
 a:hover,
