@@ -180,27 +180,15 @@ console.log("Array of Quantity :", quantity_command);
 
 
 // Formulaire de commande
-
+/*
 // Const tableau id des produits panier 
 const ids = Object.values(localStorage).map((item) => JSON.parse(item)._id);
 // Const information du formulaire
 const inputs = document.getElementById("form-contact").getElementsByTagName("input");
-
-/*
-// Utilisation d'un raccourcis classe 1
-class contactObject {
-    constructor(firstName, lastName, adress, city, email, ids) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.adress = adress;
-    this.city = city;
-    this.email = email;
-    this.ids = ids;
-    }
-    }
 */
 
 
+/*
 
 // Infos récup par le clic sur Submit
 document.addEventListener("submit", (e) => {
@@ -211,76 +199,54 @@ document.addEventListener("submit", (e) => {
     const inputs = document.getElementById("form-contact").getElementsByTagName("input");
     console.log(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value, inputs[4].value);  
     console.log("Products :", ids);    
-
-    /*
-// Utilisation d'un raccourcis classe 2
-    let contact = new contactObject(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value, inputs[4].value, ids);
-    const data = {contact};
-    console.log("Contact :", contact);
-    console.log(JSON.stringify(data));
-    */
 })
-
-
-
-
-
-
-// POST ---------
-
-/*
-const fetchTeddiesOrder = async () => {
-  const res = await fetch("http://localhost:3000/api/teddies/order", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data), // comment donner le format à data de ce que veut le back
-  });
-  const json = res.json ();
-console.log(json)
-}
-
-fetchTeddiesOrder(); 
-
-// !! Fonction qui renvoie => Bad request si mauvais format et je n'arrive pas a avoir le format voulu
-
 */
 
 
-
-
-
-
-
-/* // 1 - Affichage data voulu ?
-
-const data = {
-    contact: {firstName, lastName, adress, city, email},
-    products: [ids], 
+const postTeddiesOrder = async (data) => {
+    const res = await fetch('http://localhost:3000/api/teddies/order', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data), // comment donner le format à data de ce que veut le back
+    });
+    return res.json();
   };
-*/
+  
 
-// 2 - Exemple get data / utilisation de classe ?
-/* 
-form.addEventListener("submit", (e) => {
+  const getData = (formData, names) => {
+    const res = {};
+    for (const name of names) {
+      res[name] = formData.get(name);
+    }
+    return res;
+  };
+  
+// https://developer.mozilla.org/en-US/docs/Web/API/FormData
+  const form = document.querySelector('#form-contact');  
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target)
-    formData.getAll(),
-})
-*/
+    const formData = new FormData(e.target);
+    const contact = getData(formData, [
+      'firstName',
+      'lastName',
+      'city',
+      'address',
+      'email',
+    ]);
 
+    const products = Object.values(localStorage).map((item) => JSON.parse(item)._id);
+    const data = {
+      contact,
+      products,
+    };
 
+    const reponse = await postTeddiesOrder(data);
+    console.log(reponse);
+  });
+  
 
-/* // X - 1ère méthode récup data ?
-    // data
-    const firstName = document.querySelector("#firstName");
-    const lastName = document.querySelector("#lastName");
-    const adress = document.querySelector("#adress");
-    const city = document.querySelector("#city");
-    const email = document.querySelector("#email");
-    console.log(firstName.value, lastName.value, adress.value, city.value, email.value);
-*/
-
-
+  // J'obtiens une orderId que j'injecterai dans le html de la dernière page
+  
