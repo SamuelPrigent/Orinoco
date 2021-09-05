@@ -169,7 +169,8 @@ deleteAll.addEventListener("click", e => {
     
 
 /*
-// Les infos qu'on pourrait rajouter
+// Data : Couleur et quantity qui pourrait être rajouter dans une commande 
+
 const color_command = Object.keys(localStorage).map((item) => (item.split(" - ")[1]));
 const quantity_command = Object.entries(localStorage).map((item) => JSON.parse(item[1]).quantity);
 
@@ -177,69 +178,102 @@ console.log("Array of Colors :", color_command);
 console.log("Array of Quantity :", quantity_command);
 */
 
-// Formulaire de commande / Action on Click
 
-// Infos demandé par le back end 
+// Formulaire de commande
+
+// Const tableau id des produits panier 
 const ids = Object.values(localStorage).map((item) => JSON.parse(item)._id);
+// Const information du formulaire
+const inputs = document.getElementById("form-contact").getElementsByTagName("input");
 
-// const data = recup données panier
-const data = {
-    contact: {
-      firstName,
-      lastName,
-      adress,
-      city,
-      email,
-    },
-    products: [ids], // array off ids du panier
-  };
+/*
+// Utilisation d'un raccourcis classe 1
+class contactObject {
+    constructor(firstName, lastName, adress, city, email, ids) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.adress = adress;
+    this.city = city;
+    this.email = email;
+    this.ids = ids;
+    }
+    }
+*/
 
 
 
-  document.addEventListener("submit", (e) => {
+// Infos récup par le clic sur Submit
+document.addEventListener("submit", (e) => {
+
     // alert("Commande envoyé !");
     e.preventDefault();
-    console.log("Commande envoyé !", ids);
-    // ------
-
-    // data - firstName, lastName, adress, city, email
+    
     const inputs = document.getElementById("form-contact").getElementsByTagName("input");
-    console.log(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value, inputs[4].value);
+    console.log(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value, inputs[4].value);  
+    console.log("Products :", ids);    
+
+    /*
+// Utilisation d'un raccourcis classe 2
+    let contact = new contactObject(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value, inputs[4].value, ids);
+    const data = {contact};
+    console.log("Contact :", contact);
+    console.log(JSON.stringify(data));
+    */
 })
 
 
 
-  // Exemple post formulaire ???
-/*
 
+
+
+// POST ---------
+
+/*
+const fetchTeddiesOrder = async () => {
   const res = await fetch("http://localhost:3000/api/teddies/order", {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(data), // comment donner le format à data de ce que veut le back
   });
-  const json = res.json();
+  const json = res.json ();
 console.log(json)
+}
+
+fetchTeddiesOrder(); 
+
+// !! Fonction qui renvoie => Bad request si mauvais format et je n'arrive pas a avoir le format voulu
 
 */
 
 
-// Exemple get data au dessus du is ???
+
+
+
+
+
+/* // 1 - Affichage data voulu ?
+
+const data = {
+    contact: {firstName, lastName, adress, city, email},
+    products: [ids], 
+  };
+*/
+
+// 2 - Exemple get data / utilisation de classe ?
 /* 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const ids = ... ;
-    const  formData = new FormData(e.target)
+    const formData = new FormData(e.target)
     formData.getAll(),
-}
-)
-
+})
 */
 
 
-/* 
+
+/* // X - 1ère méthode récup data ?
     // data
     const firstName = document.querySelector("#firstName");
     const lastName = document.querySelector("#lastName");
@@ -248,3 +282,5 @@ form.addEventListener("submit", (e) => {
     const email = document.querySelector("#email");
     console.log(firstName.value, lastName.value, adress.value, city.value, email.value);
 */
+
+

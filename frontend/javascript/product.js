@@ -145,6 +145,8 @@ const autoAddColor = async () => {
 autoAddColor();
 
 
+
+// Code permet d'avoir la quantité en haut dans le header
 let totalQuantity2 = 0;
 
 function totalQuantity() {
@@ -169,3 +171,4 @@ function totalQuantity() {
 
   totalQuantity();
   replaceTotal();
+  
