@@ -35,6 +35,7 @@ const replaceText = (selector, text) => {
 };
 
 
+
 // ---------------------- Fetch Teddy + Fonction
 const Replace = async () => {
   const teddy = await fetchTeddy();
@@ -73,11 +74,12 @@ console.log("+ " + teddyLocal.name); // Produts ajouté
 console.log ("Quantity :", teddyLocal.quantity); // quantité totale
 
 
-/* OLD CODE sans clone
-// Add Quantity to Object
-if (teddy.quantity == null || 0) {teddy.quantity = 1;}
-else {teddy.quantity++;}
-*/
+// Recup texte pastille quantité pour avoir +1 à chaque click
+const IndicatorNumber = document.querySelector("#QuantityNumber"); // recup chiffre (a) pastille
+let NewNumber = JSON.parse(IndicatorNumber.innerText) + 1; // a + 1
+// console.log("Produits panier", JSON.parse(NewNumber)); Log Nouveau nombre
+IndicatorNumber.innerText = NewNumber;
+
 }
 )
 
@@ -171,4 +173,3 @@ function totalQuantity() {
 
   totalQuantity();
   replaceTotal();
-  

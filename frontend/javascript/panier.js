@@ -166,41 +166,6 @@ deleteAll.addEventListener("click", e => {
     console.log("Local Storage vide !");
     window.location.reload();
 })
-    
-
-/*
-// Data : Couleur et quantity qui pourrait être rajouter dans une commande 
-
-const color_command = Object.keys(localStorage).map((item) => (item.split(" - ")[1]));
-const quantity_command = Object.entries(localStorage).map((item) => JSON.parse(item[1]).quantity);
-
-console.log("Array of Colors :", color_command);
-console.log("Array of Quantity :", quantity_command);
-*/
-
-
-// Formulaire de commande
-/*
-// Const tableau id des produits panier 
-const ids = Object.values(localStorage).map((item) => JSON.parse(item)._id);
-// Const information du formulaire
-const inputs = document.getElementById("form-contact").getElementsByTagName("input");
-*/
-
-
-/*
-
-// Infos récup par le clic sur Submit
-document.addEventListener("submit", (e) => {
-
-    // alert("Commande envoyé !");
-    e.preventDefault();
-    
-    const inputs = document.getElementById("form-contact").getElementsByTagName("input");
-    console.log(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value, inputs[4].value);  
-    console.log("Products :", ids);    
-})
-*/
 
 
 const postTeddiesOrder = async (data) => {
@@ -245,8 +210,26 @@ const postTeddiesOrder = async (data) => {
 
     const reponse = await postTeddiesOrder(data);
     console.log(reponse);
+    console.log(reponse.orderId);
+
+    // Liens vers pages de remerciement
+    // window.location.href = "thanks.html";
+
+
+    // Msg remerciement => page panier
+    const ConfirmDiv = document.querySelector("#CommandMessage1");
+    const ConfirmDiv2 = document.querySelector("#CommandMessage2");
+    const orderIdDiv = document.querySelector("#CommandMessage3");
+    
+    ConfirmDiv.classList.add("displayflex");
+    ConfirmDiv2.classList.add("displayflex");
+    orderIdDiv.classList.add("displayflex");
+    orderIdDiv.innerText = reponse.orderId;
+
   });
   
 
-  // J'obtiens une orderId que j'injecterai dans le html de la dernière page
-  
+
+
+
+

@@ -8,7 +8,6 @@
     <meta charset="utf-8" />
     <!-- Switch de version : Desktop / Mobile -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device=width, initial-scale=1.0">
     <!-- Font Roboto -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -22,8 +21,12 @@
     <link rel="stylesheet" href="style/css/reset.css" />    
     <!-- Liens style CSS personnel -->
     <link rel="stylesheet" href="style/css/style.css" />  
+
+  <!-- Script du local storage -->
+  <script src="javascript/thanks.js" async></script>
+
     <!-- Nom de l'onglet du site -->
-    <title>Panier</title>  
+    <title>Confirmation de commande</title>  
 </head>
 
 <!-- Body FULL PAGE -->
@@ -78,16 +81,15 @@
 <div class="thanks-title">Merci, à bientot !</div>
 
 <div class="thanks-command">
-    <div>312931023900</div>
-    <div>Numéro de commande</div>
+    <div id="CommandText1" >Numéro de vôtre commande</div>
+    <div id="OderIdNumber">79ef1bd0-0f26-11ec-8a6e-e3ed235e078a</div>
 </div>
 
 <div class="thanks-desc">
-<div>Vôtre commande a été effectué à 16h11. </div>
-<div> Des questions ? Nous contacter</div>
+<div>Pour plus d'information, contactez nous. </div>
 </div>
 
-<a href="index.html" class="panier-bloc-right-add">Continuer mes achats</a>
+<a href="index.html" class="thanks-return">Continuer mes achats</a>
 
 
 
