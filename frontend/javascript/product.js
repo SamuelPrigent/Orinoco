@@ -2,7 +2,7 @@
 const fetchTeddy = async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get('id'); // déclare et obtient l'id de l'url que l'on a écris par la création du liens de card 
-  const response = await fetch(`http://localhost:3000/api/teddies/${id}`); // récupère l'object uniquement
+  const response = await fetch(`http://localhost:3000/api/teddies/${id}`); // récupère id object uniquement
   if (!response.ok) {
     throw new Error('Error Fetch');
   }
@@ -161,7 +161,7 @@ function totalQuantity() {
     //let totalQuantity;
      let GlobalQuantity = (JSON.parse(obj[1]).quantity);
      totalQuantity2 = totalQuantity2 + GlobalQuantity;
-     console.log("Quantity of Product =", totalQuantity2);
+    // console.log("Quantity of Product =", totalQuantity2);
      return totalQuantity2; 
  }
 

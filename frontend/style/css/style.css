@@ -884,7 +884,7 @@ body {
   }
 }
 .thanks-title {
-  font-size: 1.55em;
+  font-size: 1.5em;
   font-weight: 500;
 }
 
@@ -897,8 +897,9 @@ body {
 }
 
 .thanks-desc {
-  color: grey;
+  color: #4e4e4e;
   font-size: 0.85em;
+  margin-bottom: 5px;
 }
 
 .thanks-bloc {
@@ -951,6 +952,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#OderIdNumber {
+  color: #124630;
 }
 
 .footer-bloc {

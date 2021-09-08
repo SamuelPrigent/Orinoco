@@ -35,44 +35,101 @@ class UI {
 // Log pour comprendre ce qui est ajouté / le nom + l'objet entier
 console.log(JSON.parse(obj[1]).name, obj);
 // console.log(obj[0].split(" - ")[1]); // permet de target la couleur
-
 // console.log("Target array 1 :", JSON.parse(obj[1]) ); // technique pour target avec un point à la fin
 
-        const ProductList = document.querySelector(".panier-bloc-list");
+// -----------------
 
-        const ProductRow = document.createElement("div");
+// Création via JS des lignes produit du panier une par une (boucle)
+const ProductList = document.querySelector(".panier-bloc-list");
 
-        const key = JSON.parse(obj[1]).name + " - "+ obj[0].split(" - ")[1]; // nom produit dans le local storage
+// div 0 - ProductRow créé plus haut 
+const ProductRow = document.createElement("div"); // div créé par boucle injecté dans ProductList
 
-        console.log("key =" , key);
+// div 1 - ligne - fils du bloc qui contient tout
+const div1 = document.createElement('div');
+div1.classList.add('panier-bloc-list-product');
+ProductRow.appendChild(div1);
+// ProductList.appendChild(div1);
 
-        // PROBLEME AVEC ID qui ont des espaces
+// div 2 - fils de div 1
+  const paddingratioP = document.createElement('div');
+  paddingratioP.classList.add('panier-card-paddingratio');
+  div1.appendChild(paddingratioP);
 
-        // La constante key permettra : 
-        // soit remplacer l'id ?
-        // soit target lors de l'action du bouton ?
+  // div 3 - image - fils de div 2
+  const img1 = document.createElement('img');
+  img1.setAttribute('src', JSON.parse(obj[1]).imageUrl); 
+  paddingratioP.appendChild(img1);
 
-        ProductRow.innerHTML = /*html*/` 
-        <div class="panier-bloc-list-product">
-            <div class="panier-card-paddingratio">
-                <img src="${JSON.parse(obj[1]).imageUrl}"/>
-            </div>
-            <div class="panier-bloc-list-product-text">
-                <div class="panier-bloc-left-head-flex">
-                    <div class="panier-bloc-left-head-text">${JSON.parse(obj[1]).name}</div>
-                    <div class="panier-bloc-left-head-text">${formatter.format(JSON.parse(obj[1]).price / 100)}</div>
-                </div>
-                <div class="panier-bloc-left-desc">Couleur : ${obj[0].split(" - ")[1]} </div>
-                <div class="panier-bloc-left-desc">Quantité : ${JSON.parse(obj[1]).quantity}</div>
-                <button class="deleteButton"> <div class="DeleteText">Supprimer</div> <i class="fas fa-times"></i></button>
-            </div>
-        </div>
-        <div class="panier-bloc-left-separator3"></div>
-        `;
+  // div 4 - texteMain - fils de div 1
+  const textMain = document.createElement('div');
+  textMain.classList.add('panier-bloc-list-product-text');
+  div1.appendChild(textMain);
 
+  // div 5 - name And Price - fils de textMain
+  const nameAndPrice = document.createElement('div');
+  nameAndPrice.classList.add('panier-bloc-left-head-flex');
+  textMain.appendChild(nameAndPrice);
+
+  // div 6 - name - fils de nameAndPrice
+  const nameOnly = document.createElement('div');
+  nameOnly.classList.add('panier-bloc-left-head-text');
+  nameOnly.innerText = JSON.parse(obj[1]).name; 
+  nameAndPrice.appendChild(nameOnly);
+
+  // div 7 - price - fils de nameAndPrice
+  const priceOnly = document.createElement('div');
+  priceOnly.classList.add('panier-bloc-left-head-text');
+  priceOnly.innerText = formatter.format(JSON.parse(obj[1]).price / 100); 
+  nameAndPrice.appendChild(priceOnly);
+
+  // div 8 - color - fils de textMain
+  const teddyColor = document.createElement('div');
+  teddyColor.classList.add('panier-bloc-left-desc');
+  teddyColor.innerText = "Couleur : " + obj[0].split(" - ")[1]; 
+  textMain.appendChild(teddyColor);
+
+  // div 9 - Quantité - fils de textMain
+  const teddyQty = document.createElement('div');
+  teddyQty.classList.add('panier-bloc-left-desc');
+  teddyQty.innerText = "Quantité : " + JSON.parse(obj[1]).quantity; 
+  textMain.appendChild(teddyQty);
+  
+  // button 10 - Bouton supprimer - fils de textMain - >> parent du texte supprimer et de l'icone
+  const DeleteButton = document.createElement('button');
+  DeleteButton.classList.add('deleteButton');
+  textMain.appendChild(DeleteButton);
+  
+  // div 11 - Texte supprimer - fils de DeleteButton 
+  const DeleteText = document.createElement('div');
+  DeleteText.classList.add('DeleteText');
+  DeleteText.innerText = "Supprimer";
+  DeleteButton.appendChild(DeleteText);
+
+  
+  // div 12 - Icone supprimer - fils de DeleteButton 
+  const DeleteIcon = document.createElement('i');
+  DeleteIcon.classList.add('fas');
+  DeleteIcon.classList.add('fa-times'); 
+  DeleteButton.appendChild(DeleteIcon);
+
+  // div 13 - séparator - fils de 
+  const SeparatorLine = document.createElement('div');
+  SeparatorLine.classList.add('panier-bloc-left-separator3');
+  ProductRow.appendChild(SeparatorLine);
+  
 // id pour bouton : id="${key}" // ou // id="deleteButton2"
 ProductList.appendChild(ProductRow);
 
+
+
+// ---------------------------------------
+
+// Bouton Supprimer une ligne produit du panier
+
+// constante Key
+const key = JSON.parse(obj[1]).name + " - "+ obj[0].split(" - ")[1]; // nom produit dans le local storage
+console.log("key =" , key);
 
 // Boutton > enlever un produit
 const deleteButton1 = ProductRow.querySelector(".deleteButton"); 
@@ -212,11 +269,14 @@ const postTeddiesOrder = async (data) => {
     console.log(reponse);
     console.log(reponse.orderId);
 
+
     // Liens vers pages de remerciement
-    // window.location.href = "thanks.html";
+    console.log(`thanks.html?id=${reponse.orderId}`)
+    window.location.href = `thanks.html?id=${reponse.orderId}`;
 
+    /*
+    // Msg confirmation de commande page // code de test
 
-    // Msg remerciement => page panier
     const ConfirmDiv = document.querySelector("#CommandMessage1");
     const ConfirmDiv2 = document.querySelector("#CommandMessage2");
     const orderIdDiv = document.querySelector("#CommandMessage3");
@@ -225,11 +285,9 @@ const postTeddiesOrder = async (data) => {
     ConfirmDiv2.classList.add("displayflex");
     orderIdDiv.classList.add("displayflex");
     orderIdDiv.innerText = reponse.orderId;
+    */
 
   });
   
-
-
-
 
 
