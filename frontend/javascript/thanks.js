@@ -1,8 +1,6 @@
 // thanks.js
 
 // Read url params to set order in the html
-    
-
   
 const thanksParams = window.location.search;
 // console.log(thanksParams);
@@ -11,3 +9,4 @@ console.log(thanksParams2);
 
 const orderIdText = document.querySelector("#OderIdNumber");
 orderIdText.innerText = thanksParams2; // remplace texte par le numéro de commande
+
