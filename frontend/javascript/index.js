@@ -1,11 +1,18 @@
  // FETCH - Recup des tableau a partir de fetch
- const fetchTeddies = async () => {
+
+async function fetchTeddies() {
   const response = await fetch('http://localhost:3000/api/teddies');
   if (!response.ok) {
     throw new Error('Il y a eu une erreur');
   }
   return response.json();
-};
+}
+
+
+
+
+
+
 
 // Formatage de prix json
 const formatter = new Intl.NumberFormat('fr-FR', {

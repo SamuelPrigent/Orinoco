@@ -246,6 +246,7 @@ const postTeddiesOrder = async (data) => {
     return res;
   };
   
+
 // https://developer.mozilla.org/en-US/docs/Web/API/FormData
   const form = document.querySelector('#form-contact');  
   form.addEventListener('submit', async (e) => {
